@@ -13,8 +13,8 @@ const { privateKey, publicKey } = generateKeyPairSync('rsa', {
         },
     });
 
-console.log(publicKey)
-console.log(privateKey)
+//console.log(publicKey)
+//console.log(privateKey)
 
 import { publicEncrypt, privateDecrypt } from "crypto";
 
@@ -22,3 +22,12 @@ const dadosCriptografados = publicEncrypt(
     publicKey,
     Buffer.from('Olá, mundo!')
 )
+
+console.log(dadosCriptografados.toString('hex'))
+
+const dadosDecifrados = privateDecrypt(
+    privateKey,
+    dadosCriptografados
+)
+
+console.log(`Dados decifrados: ${dadosDecifrados.toString('utf-8')}`);
